@@ -18,8 +18,12 @@ statement, my solution, and the concept it practices.
 
 ## What is a window function?
 
-<!-- TODO (Wilder): write this section yourself — it's your C1 English practice.
-     5-6 lines explaining what a window function is, in your own words. -->
+A window function computes an aggregate value over a set of related rows, but
+unlike `GROUP BY`, it returns a result for each individual row rather than
+collapsing each group into a single row. This allows you to keep the row-level
+detail and the aggregate side by side. For example, you can use it to calculate
+the cumulative revenue per product in a finance report, or to rank rows within
+a group.
 
 ## Key takeaways
 
