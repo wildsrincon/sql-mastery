@@ -16,6 +16,14 @@ statement, my solution, and the concept it practices.
 | 02 | [Month-over-Month Revenue Change](window-functions/02-month-over-month-revenue.sql) | `LAG()` offset function + `PARTITION BY` |
 | 03 | [Cumulative Revenue per Product](window-functions/03-running-total-revenue.sql) | `SUM() OVER (... ORDER BY ...)` running total |
 
+## CTEs & subqueries
+
+| # | Problem | Concept |
+|---|---------|---------|
+| 01 | [Employee Query Histogram](ctes-subqueries/01-employee-query-histogram.sql) | Two-level aggregation with a CTE + `LEFT JOIN` filter in `ON` vs `WHERE` |
+| 02 | [Second Highest Salary](ctes-subqueries/02-second-highest-salary.sql) | Global `DENSE_RANK()` (no `PARTITION BY`) + `DISTINCT` for ties |
+| 03 | [Third Transaction](ctes-subqueries/03-third-transaction.sql) | `ROW_NUMBER()` + `PARTITION BY` + why `ORDER BY` direction matters |
+
 ## What is a window function?
 
 A window function computes an aggregate value over a set of related rows, but
@@ -35,3 +43,10 @@ a group.
   `FROM → WHERE → ... → SELECT`); wrap it in a CTE and filter in the outer query.
 - Adding `ORDER BY` inside a window aggregate turns a static total into a
   running total.
+- A CTE beats a nested subquery on readability and reuse, not performance —
+  modern Postgres (12+) inlines non-recursive CTEs anyway.
+- A right-table filter in a `LEFT JOIN` belongs in `ON`, not `WHERE` — in
+  `WHERE` it silently turns the join into an `INNER JOIN` (NULL comparisons
+  drop the unmatched rows).
+- Prefer `EXISTS`/`NOT EXISTS` over `IN`/`NOT IN`: `NOT IN` against a subquery
+  that returns any `NULL` yields zero rows, silently.
