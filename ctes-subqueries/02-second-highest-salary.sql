@@ -15,17 +15,13 @@
 
 WITH highest_salary AS (
   SELECT
-    employee_id,
-    name,
     salary,
-    department_id,
-    manager_id,
     DENSE_RANK() OVER (
       ORDER BY salary DESC
-    ) AS s_highest_salary
+    ) AS salary_rank
   FROM employee
 )
 SELECT DISTINCT
-  s.salary AS second_highest_salary
-FROM highest_salary AS s
-WHERE s.s_highest_salary = 2;
+  salary AS second_highest_salary
+FROM highest_salary
+WHERE salary_rank = 2;
