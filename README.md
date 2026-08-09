@@ -8,6 +8,17 @@ statement, my solution, and the concept it practices.
 > advanced SQL fundamentals. SQL first, tools later — ~60% of real data
 > engineering work is SQL.
 
+## How this repo works
+
+One folder per topic, one file per problem, committed the same day it is
+solved. Start from [`TEMPLATE.sql`](TEMPLATE.sql): the header carries the
+problem statement, the concept it practices, and why the obvious alternative
+fails. The header is the part worth writing — the query alone does not show
+what was learned.
+
+A problem solved in a client and never written to a file leaves nothing behind.
+The notes keep the lesson; only the repo keeps the work.
+
 ## Window functions
 
 | # | Problem | Concept |
