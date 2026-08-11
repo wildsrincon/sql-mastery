@@ -35,6 +35,12 @@ The notes keep the lesson; only the repo keeps the work.
 | 02 | [Second Highest Salary](ctes-subqueries/02-second-highest-salary.sql) | Global `DENSE_RANK()` (no `PARTITION BY`) + `DISTINCT` for ties |
 | 03 | [Third Transaction](ctes-subqueries/03-third-transaction.sql) | `ROW_NUMBER()` + `PARTITION BY` + why `ORDER BY` direction matters |
 
+## Joins & aggregation
+
+| # | Problem | Concept |
+|---|---------|---------|
+| 01 | [Friend Acceptance Rate](joins-aggregation/01-friend-acceptance-rate.sql) | Aggregation vs existence in a filter — `COUNT` of the nullable side after a `LEFT JOIN`, and why `HAVING` undoes the join |
+
 ## What is a window function?
 
 A window function computes an aggregate value over a set of related rows, but
